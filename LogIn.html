@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <div class="wrapper2">
+    </div>
+
+    <div class="main_content">
+        <div class="row">
+            <!-- LOG IN FORM -->
+            <div class="col s12 m6">
+            <div class="login-box">
+                <p class="logInTitle">Login</p>
+
+                <form id="login-form">
+                    <div class="user-box">
+                        <input required="" name="" type="text" class="logInEmail" id="logInEmail">
+                        <label>Email</label>
+                    </div>
+
+                    <div class="user-box">
+                        <input required="" name="" type="password" class="logInPass" id="logInPass">
+                        <label>Password</label>
+                        <span id="logInShowPass" class="logInShowPass">Show</span>
+                        <button class="userLogin" id="userLogin"><span>LOG IN  </span></button>
+                    </div>
+                </form>
+
+                <p id="signUp-link2" class="signUp-link">Don't have an account? <a href="#signup-form">Sign up!</a></p>
+            </div>
+        </div>
+    </div>
+
+     <!-- SIGN UP FORM -->
+    <div id="signup-form" class="signUp">
+        <div class="signup-content">
+            <span class="close">&times;</span>
+            <p class="title">SIGN-UP</p>
+    
+            <form class="form" id="signUp-Form" onsubmit="return checkForm()">
+                <label>
+                    <input required="" placeholder="" type="text" class="FName" id="FName" oninput="checkForm()">
+                    <span>FIRST NAME</span>
+                </label>
+    
+                <p class="err-msg" id="err-msg"></p>
+    
+                <label>
+                    <input required="" placeholder="" type="text" class="LName" id="LName" oninput="checkForm()">
+                    <span>LAST NAME</span>
+                    <p class="err-msg" id="err-msg"></p>
+                </label>
+    
+                <label>
+                    <input required="" placeholder="" type="email" class="Email" id="email">
+                    <span>E-MAIL</span>
+                </label>
+    
+                <label>
+                    <input required="" placeholder="" type="password" class="Pass" id="password" oninput="checkPassword()">
+                    <span>PASSWORD</span>
+                    <span class="showPass" id="showPass"> Show </span>
+                </label>
+    
+                <label>
+                    <input required="" placeholder="" type="password" class="ConfirmPass" id="confirm-password-input" oninput="checkPasswordMatch()">
+                    <span>CONFIRM PASSWORD</span>
+                    <span class="showConfirmPass" id="showConfirmPass"> Show </span>
+                    <span class="password-match-msg" id="password-match-msg"></span>
+                </label>
+    
+                <div id="passReq" class="passReq">
+                    <p class="Req">Password must contain:</p>
+                    <ul>
+                        <li id="passReqLength">At least 8 characters</li>
+                        <li id="passReqLower">At least one lowercase letter</li>
+                        <li id="passReqUpper">At least one uppercase letter</li>
+                        <li id="passReqNumber">At least one number</li>
+                        <li id="passReqSpecial">At least one special character</li>
+                    </ul>
+                </div>
+    
+                <div id="password-strength" class="password-strength"></div>
+    
+                <button type="submit" class="signup-btn">Sign Up</button>
+                <button type="button" class="cancelBtn">Cancel</button>
+    
+                <p id="logIn-link" class="logIn-link">Already have an account? <a href="#logInForm">Sign-In</a></p>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
