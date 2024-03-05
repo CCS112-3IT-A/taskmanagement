@@ -178,7 +178,7 @@ td:last-child {
                 <td>Create HTML and CSS layout for the Task Management System dashboard.</td>
                 <td>
                     <a href="#"><i class="material-icons">edit</i></a>
-                    <a href="#"><i class="material-icons">delete</i></a>
+                    <a href="#" class="delete-btn" onclick="confirmDelete(0)"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
             <tr>
@@ -188,7 +188,7 @@ td:last-child {
                 <td>Add JavaScript functionality for task manipulation.</td>
                 <td>
                     <a href="#"><i class="material-icons">edit</i></a>
-                    <a href="#"><i class="material-icons">delete</i></a>
+                    <a href="#" class="delete-btn" onclick="confirmDelete(1)"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
             <tr>
@@ -198,13 +198,48 @@ td:last-child {
                 <td>Add features like task deletion, editing, and status updates.</td>
                 <td>
                     <a href="#"><i class="material-icons">edit</i></a>
-                    <a href="#"><i class="material-icons">delete</i></a>
+                    <a href="#" class="delete-btn" onclick="confirmDelete(2)"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
             <!-- Additional tasks can be added here -->
         </tbody>
     </table>
 </div>
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h4>Delete Task</h4>
+        <p>Are you sure you want to delete this task?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a href="#" id="deleteTaskBtn" class="waves-effect waves-red btn-flat">Delete</a>
+    </div>
+</div>
+
+<script>
+    // Function to handle task deletion
+    function deleteTask(row) {
+        // Display confirmation prompt
+        if (confirm("Are you sure you want to delete this task?")) {
+            // Remove the task row from the table
+            row.remove();
+            // Recalculate task counts
+            countToDoTasks();
+            countTasks();
+        }
+    }
+
+    // Attach event listeners to delete buttons
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            const row = this.closest('tr');
+            deleteTask(row);
+        });
+    });
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
