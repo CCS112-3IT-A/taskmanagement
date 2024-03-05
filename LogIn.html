@@ -23,7 +23,7 @@
             <div class="login-box">
                 <p class="logInTitle">Login</p>
 
-                <form id="login-form">
+                <form id="login-form" action="login.php" method="POST">
                     <div class="user-box">
                         <input required="" name="" type="text" class="logInEmail" id="logInEmail">
                         <label>Email</label>
@@ -48,7 +48,7 @@
             <span class="close">&times;</span>
             <p class="title">SIGN-UP</p>
     
-            <form class="form" id="signUp-Form" onsubmit="return checkForm()" action="login.php" method="POST">
+            <form class="form" id="signUp-Form" onsubmit="return checkForm()" action="register.php" method="POST">
                 <label>
                     <input required="" placeholder="" type="text" class="FName" id="FName" oninput="checkForm()">
                     <span>FIRST NAME</span>
