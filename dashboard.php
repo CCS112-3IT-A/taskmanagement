@@ -121,6 +121,7 @@ td:last-child {
 
 <div class="header">
     <h1 class="small-header">Task Management System</h1>
+    <button id="logout-btn" class="logout-btn">Logout</button>
 </div>
 
 <nav>
@@ -162,6 +163,7 @@ td:last-child {
 
     <!-- Search input -->
 <input type="text" id="search-input" placeholder="Search tasks...">
+
 
 <!-- Sort buttons -->
 <button id="sort-name-btn">Sort by Name</button>
@@ -334,6 +336,13 @@ td:last-child {
                 }
             });
         });
+    });
+</script>
+
+<script>
+    document.getElementById('logout-btn').addEventListener('click', function() {
+        // Redirect to the login page
+        window.location.href = 'LogIn.html';
     });
 </script>
 </body>
