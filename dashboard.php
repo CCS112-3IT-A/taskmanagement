@@ -160,6 +160,19 @@ td:last-child {
         </div>
     </div>
 
+    <!-- Search input -->
+<input type="text" id="search-input" placeholder="Search tasks...">
+
+<!-- Sort buttons -->
+<button id="sort-name-btn">Sort by Name</button>
+<button id="sort-date-btn">Sort by Due Date</button>
+
+<!-- Filter buttons -->
+<button class="filter-btn" data-status="all">All</button>
+<button class="filter-btn" data-status="todo">To-Do</button>
+<button class="filter-btn" data-status="pending">Pending</button>
+<button class="filter-btn" data-status="finished">Finished</button>
+
     <table id="task-table" class="highlight">
         <thead>
             <tr>
@@ -269,5 +282,59 @@ td:last-child {
     countToDoTasks();
     countTasks();
     </script>
+    <script>
+    // Search functionality
+    document.getElementById('search-input').addEventListener('input', function() {
+        const searchQuery = this.value.toLowerCase().trim();
+        const rows = document.querySelectorAll('#task-table tbody tr');
+        rows.forEach(row => {
+            const taskName = row.cells[0].textContent.toLowerCase();
+            if (taskName.includes(searchQuery)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+
+    // Sort functionality
+    document.getElementById('sort-name-btn').addEventListener('click', function() {
+        sortTasks(0); // Sort by task name (column index 0)
+    });
+
+    document.getElementById('sort-date-btn').addEventListener('click', function() {
+        sortTasks(1); // Sort by due date (column index 1)
+    });
+
+    function sortTasks(columnIndex) {
+        const table = document.querySelector('#task-table tbody');
+        const rows = Array.from(table.querySelectorAll('tr'));
+
+        rows.sort((a, b) => {
+            const aData = a.cells[columnIndex].textContent.trim();
+            const bData = b.cells[columnIndex].textContent.trim();
+            return aData.localeCompare(bData);
+        });
+
+        table.innerHTML = '';
+        rows.forEach(row => table.appendChild(row));
+    }
+
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const status = this.dataset.status;
+            const rows = document.querySelectorAll('#task-table tbody tr');
+            rows.forEach(row => {
+                const rowStatus = row.cells[2].textContent.trim().toLowerCase();
+                if (status === 'all' || rowStatus === status) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
